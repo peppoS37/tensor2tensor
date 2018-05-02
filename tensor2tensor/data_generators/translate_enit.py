@@ -70,7 +70,7 @@ def _get_wmt_enit_bpe_dataset(directory, filename):
 
 
 @registry.register_problem
-class TranslateEndeWmtBpe32k(translate.TranslateProblem):
+class TranslateEnitWmtBpe32k(translate.TranslateProblem):
   """Problem spec for WMT En-It translation, BPE version."""
 
   @property
