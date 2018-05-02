@@ -118,22 +118,6 @@ class TranslateEnitWmt8k(translate.TranslateProblem):
 
 
 @registry.register_problem
-class TranslateEndeWmt32k(TranslateEndeWmt8k):
-
-  @property
-  def approx_vocab_size(self):
-    return 2**15  # 32768
-
-
-@registry.register_problem
-class TranslateEndeWmt32kPacked(TranslateEndeWmt32k):
-
-  @property
-  def packed_length(self):
-    return 256
-
-
-@registry.register_problem
 class TranslateEnitWmt8kPacked(TranslateEnitWmt8k):
 
   @property
