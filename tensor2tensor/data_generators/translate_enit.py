@@ -38,21 +38,13 @@ _ENIT_TRAIN_DATASETS = [
         "http://opus.nlpl.eu/download.php?f=News-Commentary11%2Fen-it.txt.zip",  # pylint: disable=line-too-long
         ("en-it.txt/News-Commentary.en-it.en",
          "en-it.txt/News-Commentary.en-it.it")
-    ]""",
-  [
-        "http://www.statmt.org/wmt13/training-parallel-commoncrawl.tgz",
-        ("commoncrawl.de-en.en", "commoncrawl.de-en.de")
-    ],
-    [
-        "http://opus.nlpl.eu/download.php?f=Europarl%2Fen-it.txt.zip",
-        ("training/europarl-v7.de-en.en", "training/europarl-v7.de-en.de")
-    ],"""
+    ]
 ]
 _ENIT_TEST_DATASETS = [
     [
         "http://opus.nlpl.eu/download.php?f=OpenSubtitles%2Fen-it.txt.zip",
      ("en-it.txt\ \(1\)/OpenSubtitles.en-it.en", "en-it.txt\ \(1\)/OpenSubtitles.en-it.it")
-    ],
+    ]
 ]
 
 
