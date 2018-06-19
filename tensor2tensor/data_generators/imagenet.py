@@ -315,7 +315,19 @@ class Img2imgImagenet(image_utils.ImageProblem):
     return example
 
   def generate_data(self, data_dir, tmp_dir, task_id=-1):
-    tf.logging.warning("Generate data for img2img_imagenet with image_imagenet")
+    generator_utils.generate_dataset_and_shuffle(
+        self.generator(data_dir, tmp_dir, True),
+        self.training_filepaths(data_dir, self.train_shards, shuffled=True),
+        self.generator(data_dir, tmp_dir, False),
+        self.dev_filepaths(data_dir, self.dev_shards, shuffled=True))
+
+  def generator(self, data_dir, tmp_dir, is_training):
+    if is_training:
+      return imagenet_pixelrnn_generator(
+          tmp_dir, int(True), size=_IMAGENET_MEDIUM_IMAGE_SIZE)
+    else:
+      return imagenet_pixelrnn_generator(
+          tmp_dir, int(False), size=_IMAGENET_MEDIUM_IMAGE_SIZE)
 
   def hparams(self, defaults, unused_model_hparams):
     p = defaults
