@@ -178,7 +178,23 @@ class ImageMnist(ImageMnistTune):
       return mnist_generator(tmp_dir, True, 60000)
     else:
       return mnist_generator(tmp_dir, False, 10000)
+    
+@registry.register_problem
+class Img2imgMnist(ImageMnist):
+  """8px to 32px problem."""
 
+  def dataset_filename(self):
+    return "image_mnist"
+
+  def preprocess_example(self, example, unused_mode, unused_hparams):
+    image = example["inputs"]
+    image_8 = image_utils.resize_by_area(image, 8)
+    image_32 = image_utils.resize_by_area(image, 32)
+
+    example["inputs"] = image_8
+    example["targets"] = image_32
+    return example    
+    
 
 # URLs and filenames for MNIST data.
 _FASHION_MNIST_URL = ("http://fashion-mnist.s3-website.eu-central-1"
