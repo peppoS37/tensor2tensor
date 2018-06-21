@@ -131,7 +131,6 @@ def mnist_generator(tmp_dir, training, how_many, start_from=0):
   return mnist_common_generator(tmp_dir, training, how_many, d, l, start_from)
 
 
-@registry.register_problem
 class ImageMnistTune(image_utils.Image2ClassProblem):
   """MNIST, tuning data."""
 
@@ -170,7 +169,6 @@ class ImageMnistTune(image_utils.Image2ClassProblem):
       return mnist_generator(tmp_dir, True, 5000, 55000)
 
 
-@registry.register_problem
 class ImageMnist(ImageMnistTune):
 
   def generator(self, data_dir, tmp_dir, is_training):
@@ -236,7 +234,6 @@ def fashion_mnist_generator(tmp_dir, training, how_many, start_from=0):
   return mnist_common_generator(tmp_dir, training, how_many, d, l, start_from)
 
 
-@registry.register_problem
 class ImageFashionMnist(image_utils.Image2ClassProblem):
   """Fashion MNIST."""
 
